@@ -18,7 +18,7 @@ type extractOptions struct {
 var extractOpts = new(extractOptions)
 var ExtractCmd = &cobra.Command{
 	Use:   "extract ARCHIVE",
-	Short: "Create sack archive",
+	Short: "Extract sack archive",
 	Args:  cobra.ExactArgs(1),
 	Run:   ExtractRun,
 }
