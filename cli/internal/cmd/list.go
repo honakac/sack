@@ -5,14 +5,10 @@ import (
 	"log"
 	"os"
 
-	"github.com/honakac/go-sack"
+	"github.com/honakac/sack"
 	"github.com/spf13/cobra"
 )
 
-// type createOptions struct {
-// }
-
-// var createOpts = new(createOptions)
 var ListCmd = &cobra.Command{
 	Use:   "list ARCHIVE",
 	Short: "Create sack archive",

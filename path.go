@@ -1,16 +1,13 @@
 package sack
 
 import (
-	"fmt"
 	"path/filepath"
 	"strings"
 )
 
 func trimRelativePrefix(p string) string {
 	p = strings.TrimPrefix(p, "../")
-	p = strings.TrimPrefix(p, `..\`)
 	p = strings.TrimPrefix(p, "./")
-	p = strings.TrimPrefix(p, `.\`)
 	return p
 }
 
@@ -18,12 +15,12 @@ func CleanPath(namepath string, cleanDrive bool) string {
 	str := filepath.ToSlash(filepath.Clean(namepath))
 	str = trimRelativePrefix(str)
 
-	if cleanDrive {
+	if cleanDrive && len(str) > 0 {
 		if str[0] == '/' {
-			str = strings.Replace(str, "/", "", 1)
-		} else if (str[0] >= 'A' || str[0] <= 'Z' || str[0] >= 'a' || str[0] <= 'z') && str[1] == ':' {
-			str = strings.Replace(str, fmt.Sprintf("%c:\\", str[0]), "", 1)
-			str = strings.Replace(str, fmt.Sprintf("%c:/", str[0]), "", 1)
+			str = str[1:]
+		} else if vol := filepath.VolumeName(namepath); vol != "" {
+			str = strings.TrimPrefix(str, filepath.ToSlash(vol))
+			str = strings.TrimPrefix(str, "/")
 		}
 	}
 	return str

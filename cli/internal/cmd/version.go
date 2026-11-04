@@ -3,12 +3,12 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/honakac/go-sack"
+	"github.com/honakac/sack"
 	"github.com/spf13/cobra"
 )
 
 const (
-	Version = "1.0.5"
+	Version = "1.0.6"
 )
 
 var VersionCmd = &cobra.Command{
