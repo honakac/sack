@@ -11,7 +11,7 @@ import (
 
 var ListCmd = &cobra.Command{
 	Use:   "list ARCHIVE",
-	Short: "Create sack archive",
+	Short: "Print list of files from archive",
 	Args:  cobra.ExactArgs(1),
 	Run:   listRun,
 }
